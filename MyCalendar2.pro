@@ -12,9 +12,19 @@ TARGET = MyCalendar2
 TEMPLATE = app
 
 
-SOURCES += main.cpp\
-        mainwindow.cpp \
-    mycalendar.cpp
+SOURCES += \
+    src/main.cpp\
+    src/mainwindow.cpp \
+    src/mycalendar.cpp \
+    src/diarywindow.cpp
 
-HEADERS  += mainwindow.h \
-    mycalendar.h
+HEADERS  += \
+    src/mainwindow.h \
+    src/mycalendar.h \
+    src/diarywindow.h
+
+OTHER_FILES += \
+    README.md
+
+RESOURCES += \
+    src/mycalendar.qrc

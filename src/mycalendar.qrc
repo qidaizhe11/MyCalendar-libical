@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/toolbar/forward_alt.png</file>
+        <file>images/toolbar/back_alt.png</file>
+    </qresource>
+</RCC>

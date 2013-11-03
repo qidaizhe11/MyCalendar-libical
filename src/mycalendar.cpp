@@ -1,4 +1,8 @@
-
+//
+// This file has been deprecated!
+//
+// It would be remove not long.
+//
 #include <QCalendarWidget>
 #include <QMultiMap>
 #include <QPainter>

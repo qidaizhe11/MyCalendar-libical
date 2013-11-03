@@ -1,3 +1,8 @@
+//
+// This file has been deprecated!
+//
+// It would be remove not long.
+//
 #ifndef MYCALENDAR_H
 #define MYCALENDAR_H
 

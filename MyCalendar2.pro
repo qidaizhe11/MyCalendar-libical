@@ -15,11 +15,13 @@ TEMPLATE = app
 SOURCES += \
     src/main.cpp\
     src/mainwindow.cpp \
-    src/diarywindow.cpp
+    src/diarywindow.cpp \
+    src/calendarmodel.cpp
 
 HEADERS  += \
     src/mainwindow.h \
-    src/diarywindow.h
+    src/diarywindow.h \
+    src/calendarmodel.h
 
 OTHER_FILES += \
     README.md

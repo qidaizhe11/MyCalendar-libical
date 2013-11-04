@@ -15,7 +15,7 @@ DiaryWindow::DiaryWindow(QWidget *parent) :
     title->setAlignment(Qt::AlignCenter | Qt::AlignVCenter);
     title->setFont(bold);
 
-    QIcon preIcon(":images/toolbar/back_alt.png");
+    QIcon prevIcon(":images/toolbar/back_alt.png");
     QIcon nextIcon(":images/toolbar/forward_alt.png");
     next = new QPushButton(nextIcon, "", this);
     prev = new QPushButton(prevIcon, "", this);

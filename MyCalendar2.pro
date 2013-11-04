@@ -15,12 +15,10 @@ TEMPLATE = app
 SOURCES += \
     src/main.cpp\
     src/mainwindow.cpp \
-    src/mycalendar.cpp \
     src/diarywindow.cpp
 
 HEADERS  += \
     src/mainwindow.h \
-    src/mycalendar.h \
     src/diarywindow.h
 
 OTHER_FILES += \

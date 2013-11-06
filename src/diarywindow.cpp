@@ -47,6 +47,8 @@ DiaryWindow::DiaryWindow(QWidget *parent) :
 
     connect(next, SIGNAL(clicked()), this, SLOT(nextClicked()));
     connect(prev, SIGNAL(clicked()), this, SLOT(prevClicked()));
+
+    setLayout(vlayout);
 }
 
 //

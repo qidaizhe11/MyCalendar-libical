@@ -22,12 +22,12 @@ public:
 signals:
 
 public slots:
-    void rideSelected();
-    void configChanged();
+//    void rideSelected();
+//    void configChanged();
     void nextClicked();
     void prevClicked();
-    void setDefaultView(int);
-    bool eventFilter(QObject *object, QEvent *e);
+//    void setDefaultView(int);
+//    bool eventFilter(QObject *object, QEvent *e);
 
 protected:
     QLabel *title;

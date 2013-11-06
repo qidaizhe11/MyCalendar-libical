@@ -4,6 +4,7 @@
 #include <QAbstractProxyModel>
 #include <QItemDelegate>
 #include <QTableView>
+#include <QDate>
 
 //-------------------------------------------------------------------------
 //
@@ -52,14 +53,14 @@ public:
         return true;
     }
 
-    int columnCount(const QModelIndex &parent) const {
+    int columnCount(const QModelIndex & = QModelIndex()) const {
         return 7;
     }
-    int rowCount(const QModelIndex &parent) const {
+    int rowCount(const QModelIndex & = QModelIndex()) const {
         return rows;
     }
 
-    bool hasChildren(const QModelIndex &parent) const {
+    bool hasChildren(const QModelIndex & = QModelIndex()) const {
         return false;
     }
 
@@ -74,7 +75,7 @@ private:
     QVector<QDate> dates;  // dates for each cell from zero onwards
     int rows;
 
-    QMap<QDate, QVector<int>*> dateToRows; // map a date to SQL rows
+    QMap<QDate, QVector<int>* > dateToRows; // map a date to SQL rows
 
     QList<QString> columns; // what columns in the sql model
     int filenameIndex, durationIndex, dateIndex, textIndex, colorIndex;

@@ -7,7 +7,7 @@
 // CalendarModel
 
 CalendarModel::CalendarModel(QWidget *parent)
-    : QAbstractProxyModeld(parent)
+    : QAbstractProxyModel(parent)
 {
     setParent(parent);
 
@@ -22,7 +22,7 @@ CalendarModel::CalendarModel(QWidget *parent)
 
 void CalendarModel::setMonth(int month, int year)
 {
-    if (stale || this->month() != month || this->year != year) {
+    if (stale || this->month != month || this->year != year) {
         stale = false;
         this->month = month;
         this->year = year;
@@ -56,30 +56,31 @@ void CalendarModel::setSourceModel(QAbstractItemModel *sourceModel)
     refresh();
 }
 
-void CalendarModel::index(int row, int column, const QModelIndex &parent) const
+QModelIndex CalendarModel::index(int row, int column,
+                                 const QModelIndex & = QModelIndex()) const
 {
     return createIndex(row, column, (void *)NULL);
 }
 
-void CalendarModel::parent(const QModelIndex &child) const
+QModelIndex CalendarModel::parent(const QModelIndex &child) const
 {
     // parent should be encoded in the child if we supplied it,
     // if we didn't then return duffer
-    if (child == QModelIndex() || index.internalPointer() == NULL) {
+    if (child == QModelIndex() || child.internalPointer() == NULL) {
         return QModelIndex();
     }
     else if (child.column()) {
         return QModelIndex();
     }
     else {
-        return *static_cast<QModelIndex*>(index.internalPointer());
+        return *static_cast<QModelIndex*>(child.internalPointer());
     }
 }
 
 QModelIndex CalendarModel::mapToSource(const QModelIndex &proxyIndex) const
 {
     return sourceModel()->index(proxyIndex.row(), proxyIndex.column(),
-                                QModelIndex);
+                                QModelIndex());
 }
 
 QModelIndex CalendarModel::mapFromSource(const QModelIndex &sourceIndex) const
@@ -87,7 +88,7 @@ QModelIndex CalendarModel::mapFromSource(const QModelIndex &sourceIndex) const
     return createIndex(sourceIndex.row(), sourceIndex.column(), (void *)NULL);
 }
 
-Qt::ItemFlags CalendarModel::flags(const QModelIndex &index) const
+Qt::ItemFlags CalendarModel::flags(const QModelIndex &/*index*/) const
 {
     return Qt::ItemIsSelectable | Qt::ItemIsEnabled;
 }
@@ -214,7 +215,10 @@ void CalendarModel::refresh()
     int ndays = firstDate.daysTo(QDate(year, month, monthDays));
     ndays += 7 - ndays%7;
 
+    beginResetModel();
     dates.clear();
+    endResetModel();
+
     dates.resize(ndays);
     for (int i = 0; i < ndays; ++i) {
         dates[i] = firstDate.addDays(i);
@@ -222,7 +226,7 @@ void CalendarModel::refresh()
 
     rows = ndays / 7;
 
-    reset();
+//    reset();
 }
 
 //-------------------------------------------------------------------------
@@ -259,13 +263,13 @@ void CalendarDelegate::createPainterPath(
 
     emptyPath.lineTo(fullItemRect.bottomRight() - QPoint(0, iRoundBottom));
 
-    if (bRountBottom)
+    if (bRoundBottom)
         emptyPath.quadTo(fullItemRect.bottomRight(),
                          fullItemRect.bottomRight() - QPoint(iRoundBottom, 0));
 
     emptyPath.lineTo(fullItemRect.bottomLeft() + QPoint(iRoundBottom, 0));
 
-    if (bRountBottom)
+    if (bRoundBottom)
         emptyPath.quadTo(fullItemRect.bottomLeft(),
                          fullItemRect.bottomLeft() - QPoint(0, iRoundBottom));
 

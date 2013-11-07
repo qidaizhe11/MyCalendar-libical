@@ -18,14 +18,16 @@ SOURCES += \
     src/calendarmodel.cpp \
     src/context.cpp \
     src/athlete.cpp \
-    src/icalendar.cpp
+    src/icalendar.cpp \
+    src/caldav.cpp
 
 HEADERS  += \
     src/diarywindow.h \
     src/calendarmodel.h \
     src/context.h \
     src/athlete.h \
-    src/icalendar.h
+    src/icalendar.h \
+    src/caldav.h
 
 OTHER_FILES += \
     README.md

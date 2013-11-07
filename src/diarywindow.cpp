@@ -1,5 +1,6 @@
 #include "diarywindow.h"
 #include <QtWidgets>
+#include "calendarmodel.h"
 
 DiaryWindow::DiaryWindow(QWidget *parent) :
     QWidget(parent), active(false)
@@ -32,7 +33,7 @@ DiaryWindow::DiaryWindow(QWidget *parent) :
     // TODO:
 
     monthlyView = new QTableView(this);
-//    monthlyView->setItemDelegate();
+    monthlyView->setItemDelegate(new CalendarDelegate);
     monthlyView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     monthlyView->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     monthlyView->viewport()->installEventFilter(this);

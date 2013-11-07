@@ -17,13 +17,15 @@ SOURCES += \
     src/diarywindow.cpp \
     src/calendarmodel.cpp \
     src/context.cpp \
-    src/athlete.cpp
+    src/athlete.cpp \
+    src/icalendar.cpp
 
 HEADERS  += \
     src/diarywindow.h \
     src/calendarmodel.h \
     src/context.h \
-    src/athlete.h
+    src/athlete.h \
+    src/icalendar.h
 
 OTHER_FILES += \
     README.md
